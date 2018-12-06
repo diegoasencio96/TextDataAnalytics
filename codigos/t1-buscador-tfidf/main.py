@@ -1,17 +1,20 @@
 import os, re
 from bs4 import BeautifulSoup
 from string import punctuation
+from numpy import dot
+from numpy.linalg import norm
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+from sklearn.metrics.pairwise import cosine_similarity
 
 import scipy.sparse
 
 stop_words = stopwords.words('english') + list(punctuation)
 
 ps = PorterStemmer()
+vectorizer = TfidfVectorizer()
 
 
 def clean_return(text):
@@ -60,17 +63,51 @@ def get_corpus(files):
                 corpus.append(" ".join(filtered_notices))
     return corpus
 
+def get_sklearn_dict():
+    return vectorizer.get_feature_names()
+
 def get_sklearn_tfidf(corpus):
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(corpus)
-    return X
+    return vectorizer.fit_transform(corpus)
+
+def get_sklearn_tfidf_test(corpus_test):
+    return vectorizer.transform(corpus_test)
+
+def compare_cosine(d, q):
+    return float(dot(d, q) / float(norm(d) * norm(q)))
+
 
 path = "../../reuters21578"
 files = get_files(path)
 corpus = get_corpus(files)
 matriz_tfidf = get_sklearn_tfidf(corpus)
-#print(vectorizer.get_feature_names())
-print matriz_tfidf.shape
-cx = scipy.sparse.coo_matrix(matriz_tfidf)
-for i, j, v in zip(cx.row, cx.col, cx.data): print "(%d, %d), %s" % (i, j, v)
+#print()
+#print matriz_tfidf.shape
+#cx = scipy.sparse.coo_matrix(matriz_tfidf)
+#for i, j, v in zip(cx.row, cx.col, cx.data):
+#    print "(%d, %d), %s" % (i, j, v)
 
+#dict = get_sklearn_dict()
+#print dict
+#print len(dict)
+
+tquery = []
+
+query = "new york house work pay in dollars"
+
+tquery.append(" ".join(tokenize(query.lower())))
+tquery_tfidf = get_sklearn_tfidf_test(tquery)
+#print tquery_tfidf.shape
+
+results = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
+#results.sort(reverse=True)
+print results
+'''
+ratings = []
+for documentVector in matriz_tfidf:
+    for queryVector in tquery_tfidf:
+        ratings.append(compare_cosine(documentVector, queryVector))
+
+#ratings = [compare_cosine(documentVector, tquery_tfidf) for documentVector in matriz_tfidf]
+ratings.sort(reverse=True)
+print ratings
+'''
