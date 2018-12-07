@@ -70,7 +70,7 @@ def get_sklearn_tfidf(corpus):
 def get_sklearn_tfidf_test(corpus_test):
     return vectorizer.transform(corpus_test)
 
-print "[+] Inicia el proceso ...."
+print "[+] Inicia el proceso ....\n"
 t0 = time()
 
 path = "../../reuters21578"
@@ -82,6 +82,8 @@ tquery = []
 query = "Japan to boost its defense spending to help share the burden of protecting Western interests in sensitive areas around the world, including in the Gulf"
 tquery.append(" ".join(tokenize(query.lower())))
 tquery_tfidf = get_sklearn_tfidf_test(tquery)
+
+print "[+] Frase de busqueda: "+query+"\n\n"
 
 rdict = {}
 l = len(corpus)
