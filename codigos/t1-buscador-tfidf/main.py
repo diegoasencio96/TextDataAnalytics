@@ -85,52 +85,31 @@ path = "../../reuters21578"
 files = get_files(path)
 corpus = get_corpus(files)
 matriz_tfidf = get_sklearn_tfidf(corpus)
-#print()
-#print matriz_tfidf.shape
-#cx = scipy.sparse.coo_matrix(matriz_tfidf)
-#for i, j, v in zip(cx.row, cx.col, cx.data):
-#    print "(%d, %d), %s" % (i, j, v)
-
-#dict = get_sklearn_dict()
-#print dict
-#print len(dict)
 
 tquery = []
 
 query = "Japan to boost its defense spending to help share the burden of protecting Western interests in sensitive areas around the world, including in the Gulf"
 tquery.append(" ".join(tokenize(query.lower())))
-print tquery
+#print tquery
 tquery_tfidf = get_sklearn_tfidf_test(tquery)
-print tquery_tfidf.shape
+
 
 rdict = {}
 l = len(corpus)
 for i in xrange(l):
-    sim = (cosine(matriz_tfidf[i].todense(), tquery_tfidf[0].todense()))
-    if not math.isnan(sim):
-        rdict[sim] = i
+    sim = cosine_similarity(tquery_tfidf[0].todense(), matriz_tfidf[i].todense())[0][0]
+    rdict[sim] = i
 
 result = (sorted(rdict.items(), key=operator.itemgetter(0)))
+#print result
+result = reversed(result)
 
+c = 0
 for r in result:
-    print [r[0], r[1]]
-
+    if c < 10:
+        print "Noticia: "+ str(r[1]) + "\n" + corpus[r[1]]+ "\nPorcentaje de similitud: "+str(r[0]*100)+" % \n"
+    c+=1
 
 te = time()-t0
 
 print "Tiempo de ejecución: \n" + str(te) + " segundos \n" + str(te/60)+ " minutos"
-#sim1 = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
-#print sim1
-
-#results = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
-
-'''
-ratings = []
-for documentVector in matriz_tfidf:
-    for queryVector in tquery_tfidf:
-        ratings.append(compare_cosine(documentVector, queryVector))
-
-#ratings = [compare_cosine(documentVector, tquery_tfidf) for documentVector in matriz_tfidf]
-ratings.sort(reverse=True)
-print ratings
-'''
