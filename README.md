@@ -16,9 +16,6 @@ Python 2.7
 pip
 ```
 
-## Integrantes
-Diego Alejandro Asencio Cuellar
-Juan Fonseca
 
 ## ¿Como clonar el repositorio?
 ```
@@ -66,12 +63,10 @@ python main.py
 
 # Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
 * **Diego A Asencio C** - *Desarrollador* - [diegoasencio96](https://github.com/diegoasencio96)
 * **Juan Fonseca** - *Desarrollador* - [juanfonseca92](https://github.com/juanfonseca92)
 
 # Expresiones de Gratitud 🎁
 
-* Principalmente al Doctor Angel Cruz por haber incentivado en nosotros el desarrollo de habilidades y conocimientos en el tema de analitica de datos.
+* Principalmente al Doctor **Angel Cruz Roa** - [aacruz-unillanos](https://github.com/aacruz-unillanos) por haber incentivado en nosotros el desarrollo de habilidades y conocimientos en el tema de analitica de datos.
 
