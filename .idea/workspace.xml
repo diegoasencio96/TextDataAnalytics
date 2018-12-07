@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8b245d8-c7c4-4891-a0d9-4424f85fa0b5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/codigos/t2-temas-nmf/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/codigos/t2-temas-nmf/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/codigos/t1-buscador-tfidf/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/codigos/t1-buscador-tfidf/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codigos/t1-buscador-tfidf/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/codigos/t1-buscador-tfidf/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,21 +16,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codigos/t1-buscador-tfidf/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+            <state relative-caret-position="210">
+              <caret line="83" selection-start-line="83" selection-end-line="85" selection-end-column="26" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reut2-000.sgm" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reuters21578/reut2-000.sgm">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="reut2-019.sgm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reuters21578/reut2-019.sgm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="63" column="28" selection-start-line="61" selection-end-line="63" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/codigos/t2-temas-nmf/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
+              <folding>
+                <element signature="e#123#160#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
@@ -50,6 +67,13 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>york</find>
+      <find>dollar</find>
+      <find>sort</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -59,6 +83,7 @@
         <option value="$PROJECT_DIR$/t1-buscador-tfidf/main.py" />
         <option value="$PROJECT_DIR$/codigos/t1-buscador-tfidf/requirements.txt" />
         <option value="$PROJECT_DIR$/codigos/t1-buscador-tfidf/main.py" />
+        <option value="$PROJECT_DIR$/codigos/t2-temas-nmf/main.py" />
       </list>
     </option>
   </component>
@@ -98,7 +123,12 @@
               <item name="TextDataAnalytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="TextDataAnalytics" type="462c0819:PsiDirectoryNode" />
               <item name="codigos" type="462c0819:PsiDirectoryNode" />
-              <item name="t1-buscador-tfidf" type="462c0819:PsiDirectoryNode" />
+              <item name="t2-temas-nmf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TextDataAnalytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TextDataAnalytics" type="462c0819:PsiDirectoryNode" />
+              <item name="reuters21578" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -114,11 +144,12 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/codigos/t2-temas-nmf" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/codigos" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -156,7 +187,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.35402685" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.38758388" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2579666" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
@@ -190,7 +221,7 @@
         <state relative-caret-position="1125">
           <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -210,7 +241,7 @@
         <state relative-caret-position="750">
           <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -229,9 +260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reuters21578/reut2-000.sgm">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/codigos/t1-buscador-tfidf/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -239,12 +267,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/codigos/t2-temas-nmf/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reuters21578/reut2-000.sgm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="27086" column="51" selection-start-line="27086" selection-start-column="45" selection-end-line="27086" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reuters21578/reut2-019.sgm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="63" column="28" selection-start-line="61" selection-end-line="63" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codigos/t1-buscador-tfidf/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+        <state relative-caret-position="210">
+          <caret line="83" selection-start-line="83" selection-end-line="85" selection-end-column="26" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codigos/t2-temas-nmf/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
+          <folding>
+            <element signature="e#123#160#0" expanded="true" />
           </folding>
         </state>
       </provider>

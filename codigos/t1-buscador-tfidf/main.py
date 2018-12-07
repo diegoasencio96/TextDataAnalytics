@@ -1,4 +1,6 @@
-import os, re
+# -*- coding: utf-8 -*-
+import os, re, math, operator
+from time import time
 from bs4 import BeautifulSoup
 from string import punctuation
 from numpy import dot
@@ -8,6 +10,7 @@ from nltk import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from scipy.spatial.distance import cosine
 
 import scipy.sparse
 
@@ -28,7 +31,7 @@ def tokenize(text):
     words = word_tokenize(text)
     aux = []
     for w in words:
-        w = ps.stem(w)
+        #w = ps.stem(w)
         if w not in stop_words and not w.isdigit() and len(str(w)) > 3:
             aux.append(w)
     return aux
@@ -76,6 +79,8 @@ def compare_cosine(d, q):
     return float(dot(d, q) / float(norm(d) * norm(q)))
 
 
+t0 = time()
+
 path = "../../reuters21578"
 files = get_files(path)
 corpus = get_corpus(files)
@@ -92,15 +97,33 @@ matriz_tfidf = get_sklearn_tfidf(corpus)
 
 tquery = []
 
-query = "new york house work pay in dollars"
-
+query = "Japan to boost its defense spending to help share the burden of protecting Western interests in sensitive areas around the world, including in the Gulf"
 tquery.append(" ".join(tokenize(query.lower())))
+print tquery
 tquery_tfidf = get_sklearn_tfidf_test(tquery)
-#print tquery_tfidf.shape
+print tquery_tfidf.shape
 
-results = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
-#results.sort(reverse=True)
-print results
+rdict = {}
+l = len(corpus)
+for i in xrange(l):
+    sim = (cosine(matriz_tfidf[i].todense(), tquery_tfidf[0].todense()))
+    if not math.isnan(sim):
+        rdict[sim] = i
+
+result = (sorted(rdict.items(), key=operator.itemgetter(0)))
+
+for r in result:
+    print [r[0], r[1]]
+
+
+te = time()-t0
+
+print "Tiempo de ejecución: \n" + str(te) + " segundos \n" + str(te/60)+ " minutos"
+#sim1 = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
+#print sim1
+
+#results = cosine_similarity(tquery_tfidf[0], matriz_tfidf)
+
 '''
 ratings = []
 for documentVector in matriz_tfidf:
