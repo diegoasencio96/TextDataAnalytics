@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-import os, re, math, operator
+
+# Author:  Diego Alejandro Asencio Cuellar - diegoasencio96@gmail.com
+# Author:  Juan Fonseca
+
+import os, re, operator
 from time import time
 from bs4 import BeautifulSoup
 from string import punctuation
@@ -10,9 +14,6 @@ from nltk import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from scipy.spatial.distance import cosine
-
-import scipy.sparse
 
 stop_words = stopwords.words('english') + list(punctuation)
 
@@ -35,8 +36,6 @@ def tokenize(text):
         if w not in stop_words and not w.isdigit() and len(str(w)) > 3:
             aux.append(w)
     return aux
-    #return [w for w in words if w not in stop_words and not w.isdigit() and len(str(w))>3]
-
 
 def get_files(path_analyze):
     path = os.walk(path_analyze)
@@ -47,7 +46,6 @@ def get_files(path_analyze):
             if (extension == "."+"sgm"):
                 files_.append("../../reuters21578" + "/" +name + extension)
     return sorted(files_)
-
 
 def get_corpus(files):
     corpus = []
@@ -66,19 +64,13 @@ def get_corpus(files):
                 corpus.append(" ".join(filtered_notices))
     return corpus
 
-def get_sklearn_dict():
-    return vectorizer.get_feature_names()
-
 def get_sklearn_tfidf(corpus):
     return vectorizer.fit_transform(corpus)
 
 def get_sklearn_tfidf_test(corpus_test):
     return vectorizer.transform(corpus_test)
 
-def compare_cosine(d, q):
-    return float(dot(d, q) / float(norm(d) * norm(q)))
-
-
+print "[+] Inicia el proceso ...."
 t0 = time()
 
 path = "../../reuters21578"
@@ -87,12 +79,9 @@ corpus = get_corpus(files)
 matriz_tfidf = get_sklearn_tfidf(corpus)
 
 tquery = []
-
 query = "Japan to boost its defense spending to help share the burden of protecting Western interests in sensitive areas around the world, including in the Gulf"
 tquery.append(" ".join(tokenize(query.lower())))
-#print tquery
 tquery_tfidf = get_sklearn_tfidf_test(tquery)
-
 
 rdict = {}
 l = len(corpus)
@@ -101,15 +90,13 @@ for i in xrange(l):
     rdict[sim] = i
 
 result = (sorted(rdict.items(), key=operator.itemgetter(0)))
-#print result
 result = reversed(result)
 
 c = 0
 for r in result:
     if c < 10:
-        print "Noticia: "+ str(r[1]) + "\n" + corpus[r[1]]+ "\nPorcentaje de similitud: "+str(r[0]*100)+" % \n"
+        print "[+] Noticia: "+ str(r[1]) + "\n" + corpus[r[1]]+ "\nPorcentaje de similitud: "+str(r[0]*100)+" % \n"
     c+=1
 
 te = time()-t0
-
-print "Tiempo de ejecución: \n" + str(te) + " segundos \n" + str(te/60)+ " minutos"
+print "[+] Tiempo de ejecución: \n" + str(te) + " segundos \n" + str(te/60)+ " minutos"

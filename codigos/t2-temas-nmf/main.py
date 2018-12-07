@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+
 # Author: Olivier Grisel <olivier.grisel@ensta.org>
 #         Lars Buitinck <L.J.Buitinck@uva.nl>
 # License: BSD 3 clause
+# Modificado por: Diego Alejandro Asencio Cuellar
+#                   diegoasencio96@gmail.com
 
 from __future__ import print_function
 from time import time
@@ -69,7 +73,7 @@ def get_corpus(files):
 
 t0 = time()
 
-print("Loading dataset and extracting TF-IDF features...")
+print("[+] Loading dataset and extracting TF-IDF features...")
 #dataset = fetch_20newsgroups(shuffle=True, random_state=1, remove=('headers', 'footers', 'quotes'))
 
 #print(dataset.data[0])
@@ -82,19 +86,17 @@ corpus = get_corpus(files)
 vectorizer = TfidfVectorizer(max_df=0.95, min_df=2, max_features=n_features, stop_words='english')
 #tfidf = vectorizer.fit_transform(dataset.data[:n_samples])
 tfidf = vectorizer.fit_transform(corpus)
-print("done in %0.3fs." % (time() - t0))
-
-
+print("[+] done in %0.3fs." % (time() - t0))
 
 
 print(tfidf)
 
 
 # Fit the NMF model
-print("Fitting the NMF model with n_samples=%d and n_features=%d..."
+print("[+] Fitting the NMF model with n_samples=%d and n_features=%d..."
       % (n_samples, n_features))
 nmf = NMF(n_components=n_topics, random_state=1).fit(tfidf)
-print("done in %0.3fs." % (time() - t0))
+print("[+] done in %0.3fs." % (time() - t0))
 
 
 
@@ -102,7 +104,7 @@ print("done in %0.3fs." % (time() - t0))
 feature_names = vectorizer.get_feature_names()
 
 for topic_idx, topic in enumerate(nmf.components_):
-    print("Topic #%d:" % topic_idx)
+    print("[+] Topic #%d:" % topic_idx)
     print(" ".join([feature_names[i]
                     for i in topic.argsort()[:-n_top_words - 1:-1]]))
     print()
