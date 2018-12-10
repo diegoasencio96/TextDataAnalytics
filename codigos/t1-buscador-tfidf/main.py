@@ -78,12 +78,20 @@ files = get_files(path)
 corpus = get_corpus(files)
 matriz_tfidf = get_sklearn_tfidf(corpus)
 
+
 tquery = []
-query = "Japan to boost its defense spending to help share the burden of protecting Western interests in sensitive areas around the world, including in the Gulf"
-tquery.append(" ".join(tokenize(query.lower())))
+query = "British Airports Authority - is to be privatised in June or July of this year, Transport Secretary John Moore told Parliament"
+query2 = "billion said dlrs year market quarter bank growth rate reuter money lower earnings higher expected rates analysts rise rose reserves"
+tquery.append(" ".join(tokenize(query2.lower())))
 tquery_tfidf = get_sklearn_tfidf_test(tquery)
 
-print "[+] Frase de busqueda: "+query+"\n\n"
+
+
+#print(vectorizer.get_feature_names())
+
+print tquery_tfidf.shape
+
+print "[+] Frase de busqueda: "+query2+"\n\n"
 
 rdict = {}
 l = len(corpus)
